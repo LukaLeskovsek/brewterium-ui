@@ -1,10 +1,19 @@
 import React from 'react'
 import {Modal, Button} from 'antd';
-
+import WarehouseAddNewForm from './WarehouseAddNewForm';
 class WarehouseAddNew extends React.Component {
   static defaultProps = {
     pathName: 'Warehouse',
     roles: ['agent', 'administrator'],
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+      }
+    });
   }
 
   render() {
@@ -13,22 +22,16 @@ class WarehouseAddNew extends React.Component {
         <Modal
         visible={props.visible}
         title="Add new warehouse"
-        onOk={this.handleOk}
+        onOk={this.handleSubmit}
         onCancel={props.afterClose}
         footer={[
           <Button key="back" onClick={props.afterClose}>Return</Button>,
-          <Button key="submit" type="primary" loading={props.loading} onClick={this.handleOk}>
-            Submit
-          </Button>,
         ]}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <WarehouseAddNewForm {...props} onSubmit={this.handleSubmit} />
       </Modal>
     )
   }
 }
+
 export default WarehouseAddNew;

@@ -4,10 +4,20 @@ const FormItem = Form.Item;
 
 const WarehouseAddNewForm = Form.create()(
     class extends React.Component {
+       
+        handleSubmit = (e) => {
+            e.preventDefault();
+            this.props.form.validateFields((err, values) => {
+              if (!err) {
+                console.log('Received values of form: ', values);
+              }
+            });
+          }
+
         render() {
             const { getFieldDecorator } = this.props.form;
             return(
-                <Form layout="vertical">
+                <Form layout="vertical" onSubmit={this.handleSubmit}>
                 <FormItem label="Title">
                   {getFieldDecorator('title', {
                     rules: [{ required: true, message: 'Please input the title of collection!' }],
@@ -28,8 +38,13 @@ const WarehouseAddNewForm = Form.create()(
                     </Radio.Group>
                   )}
                 </FormItem>
+                <Button type="primary" htmlType="submit">
+                    Save
+                </Button>
               </Form>
             );
         }
     }
 );
+
+export default WarehouseAddNewForm;
