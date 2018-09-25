@@ -17,17 +17,12 @@ const menu = (
     </Menu>
 );
 
-const WarehouseList = ({warehouseList, details}) => {
-    
-    const onDetails = (event) => {
-        event.preventDefault();
-        const { dispatch } = this.props;
-        dispatch(details(event));    
-    }
+const WarehouseList = ({warehouseList, fetchDetails, addNew}) => {
+    console.log('PROPS 2 : ', this.props)
     return (
         <div>
             <Row type="flex" justify="end">
-                <Button type="primary" shape="circle" icon="plus" onClick={() => onDetails('new')}/>
+                <Button type="primary" shape="circle" icon="plus" onClick={() => addNew('new warehouse')}/>
                 </Row>
                 <Table
                     dataSource={warehouseList}
@@ -51,7 +46,7 @@ const WarehouseList = ({warehouseList, details}) => {
                         key="operation" 
                         render={(record) => (
                             //<a href={`warehouse_details\\${record.id}`}>
-                            <a onClick={() => details(record.id)}>
+                            <a onClick={() => fetchDetails(record.id)}>
                                 Details
                             </a>
                         )}                        

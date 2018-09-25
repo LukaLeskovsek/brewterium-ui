@@ -215,7 +215,13 @@ class MenuLeft extends React.Component {
             onOpenChange={this.onOpenChange}
             mode="inline"
             className="menuLeft__navigation"
-          >            
+          >
+            <Menu.Item key={'settings'}>
+              <span className="menuLeft__item-title">Theme Settings</span>
+              <span
+                className={'icmn icmn-cog menuLeft__icon utils__spin-delayed--pseudo-selector'}
+              />
+            </Menu.Item>
             {menuItems}
           </Menu>
         </Scrollbars>
@@ -223,12 +229,5 @@ class MenuLeft extends React.Component {
     )
   }
 }
-/*
-  <Menu.Item key={'settings'}>
-    <span className="menuLeft__item-title">Theme Settings</span>
-    <span
-      className={'icmn icmn-cog menuLeft__icon utils__spin-delayed--pseudo-selector'}
-    />
-  </Menu.Item>
-*/
+
 export { MenuLeft, menuData }

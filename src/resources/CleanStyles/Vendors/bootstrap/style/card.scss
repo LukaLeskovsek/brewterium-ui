@@ -48,6 +48,10 @@
     }
   }
 
+  &--fullHeight {
+    height: calc(100% - 2.3rem);
+  }
+
   @at-root {
     .utils__content > & {
       &:last-child {

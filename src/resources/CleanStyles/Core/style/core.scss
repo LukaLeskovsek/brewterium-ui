@@ -290,6 +290,89 @@ button, input, select, textarea {
       border-bottom: none;
     }
   }
+
+  //chartist.js first line color
+  &__chartist {
+    &--primary {
+      .ct-series-a {
+        .ct-area {
+          fill: $primary !important;
+        }
+
+        .ct-line {
+          stroke: $primary !important;
+        }
+
+        .ct-point {
+          stroke: $primary !important;
+        }
+      }
+    }
+
+    &--success {
+      .ct-series-a {
+        .ct-area {
+          fill: $success !important;
+        }
+
+        .ct-line {
+          stroke: $success !important;
+        }
+
+        .ct-point {
+          stroke: $success !important;
+        }
+      }
+    }
+
+    &--warning {
+      .ct-series-a {
+        .ct-area {
+          fill: $warning !important;
+        }
+
+        .ct-line {
+          stroke: $warning !important;
+        }
+
+        .ct-point {
+          stroke: $warning !important;
+        }
+      }
+    }
+
+    &--danger {
+      .ct-series-a {
+        .ct-area {
+          fill: $danger !important;
+        }
+
+        .ct-line {
+          stroke: $danger !important;
+        }
+
+        .ct-point {
+          stroke: $danger !important;
+        }
+      }
+    }
+
+    &--default {
+      .ct-series-a {
+        .ct-area {
+          fill: $default !important;
+        }
+
+        .ct-line {
+          stroke: $default !important;
+        }
+
+        .ct-point {
+          stroke: $default !important;
+        }
+      }
+    }
+  }
 }
 
 

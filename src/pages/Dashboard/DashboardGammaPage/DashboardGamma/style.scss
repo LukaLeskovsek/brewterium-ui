@@ -1,0 +1,42 @@
+@import '../../../../resources/mixins';
+
+.chartPieExample {
+  .ct-chart {
+    height: rem(200);
+  }
+
+  .ct-series-a  path {
+    stroke: $success;
+  }
+
+  .ct-series-b  path {
+    stroke: $primary;
+  }
+
+  .ct-series-c  path{
+    stroke: $danger;
+  }
+
+  .ct-series path{
+    transition: stroke-opacity 0.2s ease-in-out;
+    &:hover {
+      stroke-opacity: 0.8;
+    }
+  }
+
+  .ct-tooltip {
+    display: block !important;
+    top: 49% !important;
+    left: 50% !important;
+    right: initial !important;
+    bottom: initial !important;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    color: $black;
+    font-size: rem(20);
+    font-weight: 700;
+    &::before {
+      display: none;
+    }
+  }
+}

@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {setActiveDialog} from './../../../ducks/app';
 import WarehouseList from './../WarehouseList';
-import {getWarehouseDetails} from './../../../ducks/warehouse';
+import {getWarehouseDetails, addWarehouse} from '../../../ducks/warehouse/warehouse';
+import WarehouseAddNew from './../WarehouseAddNew';
 
 let data = [{
     id : 1,
@@ -15,22 +17,43 @@ let data = [{
     platform : "bek"
 }];
 
-const onDetails = (event) => {
-    alert(event);
-};
 
 class WarehouseListPage extends React.Component {
+
+    state = {
+        isOpen : false
+    }
+
+    onShowAddNew = (event,e) => {
+        this.setState({
+            isOpen : true
+        });
+    };
+    
+    onAddNewClose = (e) => {
+        this.setState({
+            isOpen : false
+        })
+    }
+
     render(){
+        const {isOpen} = this.state;
         return (
             <div>
-                <WarehouseList warehouseList={data} details={getWarehouseDetails} />
+                <WarehouseAddNew visible={isOpen} afterClose={this.onAddNewClose}/>
+                <WarehouseList warehouseList={data} {...this.props} addNew={this.onShowAddNew} />
             </div>
         );
     }
 }
 
 function mapStateToProps(state){
-
+    
 }
-
-export default connect()(WarehouseListPage);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchDetails: (url) => dispatch(getWarehouseDetails(url)),
+        setActiveDialog : (state, activeDialog) => dispatch(setActiveDialog(state, activeDialog))
+    };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(WarehouseListPage);

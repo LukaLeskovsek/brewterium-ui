@@ -94,8 +94,8 @@ class MenuTop extends React.Component {
       if (menuItem.children) {
         let subMenuTitle = (
           <span className="menuTop__title-wrap" key={menuItem.key}>
-            <span className="menuTop__item-title">{menuItem.title}</span>
             {menuItem.icon && <span className={menuItem.icon + ' menuTop__icon'} />}
+            <span className="menuTop__item-title">{menuItem.title}</span>
           </span>
         )
         return (
@@ -125,8 +125,8 @@ class MenuTop extends React.Component {
               : undefined
           }
         >
-          <span className="menuTop__item-title">{title}</span>
           {icon && <span className={icon + ' menuTop__icon'} />}
+          <span className="menuTop__item-title">{title}</span>
         </Link>
       </Menu.Item>
     ) : (
@@ -176,8 +176,8 @@ class MenuTop extends React.Component {
           className="menuTop__navigation"
         >
           <Menu.Item key={'settings'}>
-            <span className="menuTop__item-title">Settings</span>
             <span className={'icmn icmn-cog menuTop__icon utils__spin-delayed--pseudo-selector'} />
+            <span className="menuTop__item-title">Settings</span>
           </Menu.Item>
           {menuItems}
         </Menu>

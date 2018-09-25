@@ -5,7 +5,7 @@ const mapStateToProps = (state, props) => ({
   isHideLogin: state.app.isHideLogin,
 })
 
-//@connect(mapStateToProps)
+@connect(mapStateToProps)
 class Loader extends React.Component {
   render() {
     const { isHideLogin } = this.props
@@ -14,4 +14,4 @@ class Loader extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(Loader)
+export default Loader

@@ -3,7 +3,7 @@ import { routerReducer } from 'react-router-redux'
 import { pendingTasksReducer } from 'react-redux-spinner'
 import app from './app'
 import login from './login'
-import warehouse from './warehouse';
+import warehouse from './warehouse/warehouse';
 
 export default combineReducers({
   routing: routerReducer,

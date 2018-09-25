@@ -6,7 +6,7 @@ class ProjectManagement extends React.Component {
     const menu = (
       <Menu selectable={false}>
         <span className="topbar__dropdownTitle">
-          <strong>Primary Fermenter</strong>
+          <strong>Active</strong>
         </span>
         <Menu.Item>
           <a href="javascript: void(0);">Project Management</a>
@@ -18,7 +18,7 @@ class ProjectManagement extends React.Component {
           <a href="javascript: void(0);">Documentation</a>
         </Menu.Item>
         <span className="topbar__dropdownTitle">
-          <strong>Secondary Fermenter</strong>
+          <strong>Inactive</strong>
         </span>
         <Menu.Item>
           <a href="javascript: void(0);">Marketing</a>
@@ -37,7 +37,7 @@ class ProjectManagement extends React.Component {
           <a className="ant-dropdown-link" href="/">
             <i className="icmn-database mr-2 topbar__dropdownIcon" />
             <span className="d-none d-xl-inline">
-              <strong>Active batches</strong>
+              <strong>Project Management</strong>
             </span>
           </a>
         </Dropdown>

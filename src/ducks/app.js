@@ -186,10 +186,12 @@ export default createReducer(
       return newState
     },
     [setActiveDialog]: (state, activeDialog) => {
+      console.log('SetActiveDialog : ', state);
+      console.log('Active dialog : ', activeDialog);
       const result = { ...state, activeDialog }
       if (activeDialog !== '') {
         const id = activeDialog
-        result.dialogForms = { ...state.dialogForms, [id]: true }
+        result.dialogForms = { ...state.dialogForms, [id]: true, isOpen : true }
       }
       return result
     },

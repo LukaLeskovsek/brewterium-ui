@@ -9,6 +9,7 @@ const mapStateToProps = (state, props) => ({
   isUpdatingContent: state.app.isUpdatingContent,
 })
 
+@connect(mapStateToProps)
 class AppContent extends React.Component {
   static contextTypes = {
     getContentBuffer: PropTypes.func,
@@ -44,4 +45,4 @@ class AppContent extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(AppContent)
+export default AppContent
