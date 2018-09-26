@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Form, Input, Radio } from 'antd';
 const FormItem = Form.Item;
 
-const WarehouseAddNewForm = Form.create()(
+const WarehouseEditForm = Form.create()(
     class extends React.Component {
        
         handleSubmit = (e) => {
@@ -47,4 +47,4 @@ const WarehouseAddNewForm = Form.create()(
     }
 );
 
-export default WarehouseAddNewForm;
+export default WarehouseEditForm;

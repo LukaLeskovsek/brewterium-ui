@@ -2,21 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {setActiveDialog} from './../../../ducks/app';
 import WarehouseList from './../WarehouseList';
-import {getWarehouseDetails, addWarehouse} from '../../../ducks/warehouse/warehouse';
-import WarehouseAddNew from './../WarehouseAddNew';
-
-let data = [{
-    id : 1,
-    status : 0,
-    name : "warehouse main HQ",
-    platform : "bask"
-},{
-    id : 2,
-    status : 0,
-    name : "warehouse north",
-    platform : "bek"
-}];
-
+import {getWarehouseDetails, addWarehouse, getWarehouseList} from '../../../ducks/warehouse/warehouse';
+import WarehouseEdit from './../WarehouseEdit';
 
 class WarehouseListPage extends React.Component {
 
@@ -36,22 +23,29 @@ class WarehouseListPage extends React.Component {
         })
     }
 
+    componentDidMount(){
+        this.props.fetchList();
+    }
+
     render(){
         const {isOpen} = this.state;
         return (
             <div>
-                <WarehouseAddNew visible={isOpen} afterClose={this.onAddNewClose}/>
-                <WarehouseList warehouseList={data} {...this.props} addNew={this.onShowAddNew} />
+                <WarehouseEdit visible={isOpen} afterClose={this.onAddNewClose}/>
+                <WarehouseList warehouseList={this.props.data} {...this.props} addNew={this.onShowAddNew} />
             </div>
         );
     }
 }
 
 function mapStateToProps(state){
-    
+    return {
+        data : state.warehouse.list
+    }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
+        fetchList : () => dispatch(getWarehouseList()),
         fetchDetails: (url) => dispatch(getWarehouseDetails(url)),
         setActiveDialog : (state, activeDialog) => dispatch(setActiveDialog(state, activeDialog))
     };

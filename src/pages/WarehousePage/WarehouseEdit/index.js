@@ -1,7 +1,7 @@
 import React from 'react'
 import {Modal, Button} from 'antd';
-import WarehouseAddNewForm from './WarehouseAddNewForm';
-class WarehouseAddNew extends React.Component {
+import WarehouseEditForm from './WarehouseEditForm';
+class WarehouseEdit extends React.Component {
   static defaultProps = {
     pathName: 'Warehouse',
     roles: ['agent', 'administrator'],
@@ -28,10 +28,10 @@ class WarehouseAddNew extends React.Component {
           <Button key="back" onClick={props.afterClose}>Return</Button>,
         ]}
       >
-        <WarehouseAddNewForm {...props} onSubmit={this.handleSubmit} />
+        <WarehouseEditForm {...props} onSubmit={this.handleSubmit} />
       </Modal>
     )
   }
 }
 
-export default WarehouseAddNew;
+export default WarehouseEdit;
