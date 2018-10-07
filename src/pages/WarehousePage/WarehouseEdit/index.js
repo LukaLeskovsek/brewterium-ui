@@ -1,35 +1,35 @@
-  import React from 'react'
-import {Modal, Button} from 'antd';
-import WarehouseAddNewForm from './WarehouseAddNewForm';
+import React from 'react'
+import { Modal, Button } from 'antd'
+import WarehouseAddNewForm from './WarehouseAddNewForm'
 class WarehouseEdit extends React.Component {
   static defaultProps = {
     pathName: 'Warehouse',
     roles: ['agent', 'administrator'],
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  handleSubmit = e => {
+    e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        console.log('Received values of form: ', values)
       }
-    });
+    })
   }
 
-  componentDidMount(){
-
-  }
+  componentDidMount() {}
 
   render() {
     const props = this.props
     return (
-        <Modal
+      <Modal
         visible={props.visible}
         title="Add new warehouse"
         onOk={this.handleSubmit}
         onCancel={props.afterClose}
         footer={[
-          <Button key="back" onClick={props.afterClose}>Return</Button>,
+          <Button key="back" onClick={props.afterClose}>
+            Return
+          </Button>,
         ]}
       >
         <WarehouseAddNewForm {...props} onSubmit={this.handleSubmit} />
@@ -38,4 +38,4 @@ class WarehouseEdit extends React.Component {
   }
 }
 
-export default WarehouseEdit;
+export default WarehouseEdit

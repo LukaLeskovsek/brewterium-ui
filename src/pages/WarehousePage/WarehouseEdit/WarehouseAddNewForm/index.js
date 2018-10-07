@@ -74,7 +74,11 @@ class WarehouseAddNew extends React.Component {
     const fields = this.state.fields
     return (
       <div>
-        <WarehouseEditForm {...fields} onChange={this.handleFormChange} onSubmit={this.handleSubmit} />
+        <WarehouseEditForm
+          {...fields}
+          onChange={this.handleFormChange}
+          onSubmit={this.handleSubmit}
+        />
       </div>
     )
   }

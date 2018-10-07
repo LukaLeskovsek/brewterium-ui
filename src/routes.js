@@ -22,23 +22,22 @@ const loadableRoutes = {
     component: loadable(() => import('pages/DefaultPages/EmptyPage')),
   },
 
-
   // Dashboards
   '/dashboard/alpha': {
     component: loadable(() => import('pages/Dashboard/DashboardAlphaPage')),
   },
 
-  '/inbound-orders' : {
+  '/inbound-orders': {
     component: loadable(() => import('pages/InboundOrdersPage')),
   },
 
-  '/warehouse' : {
-    component : loadable( () => import('pages/WarehousePage')),
+  '/warehouse': {
+    component: loadable(() => import('pages/WarehousePage')),
   },
 
-  '/edit/warehouse/:id' : {
-    component : loadable( () => import('pages/WarehousePage/WarehouseDetails')),
-  }
+  '/edit/warehouse/:id': {
+    component: loadable(() => import('pages/WarehousePage/WarehouseDetails')),
+  },
 }
 
 class Routes extends React.Component {

@@ -22,7 +22,7 @@ import 'bootstrap/dist/css/bootstrap.min.css' // bootstrap styles
 import 'resources/AntStyles/AntDesign/antd.cleanui.scss'
 import 'resources/CleanStyles/Core/core.cleanui.scss'
 import 'resources/CleanStyles/Vendors/vendors.cleanui.scss'
-import history from './history';
+import history from './history'
 
 const router = routerMiddleware(history)
 const middlewares = [router, thunk]
