@@ -5,7 +5,6 @@ import { createStore, applyMiddleware } from 'redux'
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 import { Helmet } from 'react-helmet'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import createHistory from 'history/createHashHistory'
 import thunk from 'redux-thunk'
 import 'es6-promise/auto'
 import 'setimmediate'
@@ -23,8 +22,8 @@ import 'bootstrap/dist/css/bootstrap.min.css' // bootstrap styles
 import 'resources/AntStyles/AntDesign/antd.cleanui.scss'
 import 'resources/CleanStyles/Core/core.cleanui.scss'
 import 'resources/CleanStyles/Vendors/vendors.cleanui.scss'
+import history from './history';
 
-const history = createHistory()
 const router = routerMiddleware(history)
 const middlewares = [router, thunk]
 const isLogger = false

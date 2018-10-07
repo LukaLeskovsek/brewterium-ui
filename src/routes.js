@@ -34,6 +34,10 @@ const loadableRoutes = {
 
   '/warehouse' : {
     component : loadable( () => import('pages/WarehousePage')),
+  },
+
+  '/edit/warehouse/:id' : {
+    component : loadable( () => import('pages/WarehousePage/WarehouseDetails')),
   }
 }
 

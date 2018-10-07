@@ -17,8 +17,8 @@ const menu = (
     </Menu>
 );
 
-const WarehouseList = ({warehouseList, fetchDetails, addNew}) => {
-    console.log('PROPS 2 : ', this.props)
+const WarehouseList = ({warehouseList, fetchDetails, addNew, details, ...props}) => {
+    console.log('Warehouse list data : ', warehouseList);
     return (
         <div>
             <Row type="flex" justify="end">
@@ -26,27 +26,26 @@ const WarehouseList = ({warehouseList, fetchDetails, addNew}) => {
                 </Row>
                 <Table
                     dataSource={warehouseList}
-                    pagination="false">
-                    
+                    pagination="false"
+                    rowKey={record => record.id}
+                >                    
                     <Column 
                         title="Status" 
                         dataIndex="Status"
-                        key="id" 
                         width="70"
                         render={status =>(
                             <span>
                                 <Badge status="success" />
-                                Active
+                                Active ({status})
                             </span>
                         )}  />
-                    <Column title="Name" dataIndex="name" key="name"/>
-                    <Column title="Platfrom" dataIndex="platform" key="platform" />
+                    <Column title="Name" dataIndex="name"/>
+                    <Column title="Description" dataIndex="description"/>
                     <Column 
                         title="Actions" 
-                        key="operation" 
                         render={(record) => (
                             //<a href={`warehouse_details\\${record.id}`}>
-                            <a onClick={() => fetchDetails(record.id)}>
+                            <a onClick={() => details(record.id)}>
                                 Details
                             </a>
                         )}                        

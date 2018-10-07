@@ -1,50 +1,83 @@
-import React from 'react';
-import { Button, Form, Input, Radio } from 'antd';
-const FormItem = Form.Item;
+import React from 'react'
+import { Button, Form, Input } from 'antd'
+const FormItem = Form.Item
 
-const WarehouseEditForm = Form.create()(
-    class extends React.Component {
-       
-        handleSubmit = (e) => {
-            e.preventDefault();
-            this.props.form.validateFields((err, values) => {
-              if (!err) {
-                console.log('Received values of form: ', values);
-              }
-            });
-          }
-
-        render() {
-            const { getFieldDecorator } = this.props.form;
-            return(
-                <Form layout="vertical" onSubmit={this.handleSubmit}>
-                <FormItem label="Title">
-                  {getFieldDecorator('title', {
-                    rules: [{ required: true, message: 'Please input the title of collection!' }],
-                  })(
-                    <Input />
-                  )}
-                </FormItem>
-                <FormItem label="Description">
-                  {getFieldDecorator('description')(<Input type="textarea" />)}
-                </FormItem>
-                <FormItem className="collection-create-form_last-form-item">
-                  {getFieldDecorator('modifier', {
-                    initialValue: 'public',
-                  })(
-                    <Radio.Group>
-                      <Radio value="public">Public</Radio>
-                      <Radio value="private">Private</Radio>
-                    </Radio.Group>
-                  )}
-                </FormItem>
-                <Button type="primary" htmlType="submit">
-                    Save
-                </Button>
-              </Form>
-            );
-        }
+const WarehouseEditForm = Form.create({
+  onFieldsChange(props, changedFields) {
+    console.log('onFieldsChange', changedFields)
+    props.onChange(changedFields)
+  },
+  onValuesChange(_, values) {
+    console.log(values)
+  },
+  mapPropsToFields(props) {
+    return {
+      name: Form.createFormField({
+        ...props.name,
+        value: props.name.value,
+      }),
+      description: Form.createFormField({
+        ...props.description,
+        value: props.description.value,
+      }),
     }
-);
+  },
+})(props => {
+  const { getFieldDecorator } = props.form
+  return (
+    <Form layout="vertical" onSubmit={props.onSubmit}>
+      <FormItem label="Name">
+        {getFieldDecorator('name', {
+          rules: [{ required: true, message: 'Please input the name of the warehouse!' }],
+        })(<Input />)}
+      </FormItem>
 
-export default WarehouseEditForm;
+      <FormItem label="Description">
+        {getFieldDecorator('description')(<Input type="textarea" />)}
+      </FormItem>
+
+      <Button type="primary" htmlType="submit">
+        Save
+      </Button>
+    </Form>
+  )
+})
+class WarehouseAddNew extends React.Component {
+  state = {
+    fields: {
+      name: {
+        value: 'benjycui',
+      },
+      description: {
+        value: '',
+      },
+    },
+  }
+
+  handleFormChange = changedFields => {
+    console.log('HandleFormChange')
+    this.setState(({ fields }) => ({
+      fields: { ...fields, ...changedFields },
+    }))
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values)
+      }
+    })
+  }
+
+  render() {
+    const fields = this.state.fields
+    return (
+      <div>
+        <WarehouseEditForm {...fields} onChange={this.handleFormChange} onSubmit={this.handleSubmit} />
+      </div>
+    )
+  }
+}
+
+export default WarehouseAddNew

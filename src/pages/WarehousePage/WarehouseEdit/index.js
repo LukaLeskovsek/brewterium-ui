@@ -1,6 +1,6 @@
-import React from 'react'
+  import React from 'react'
 import {Modal, Button} from 'antd';
-import WarehouseEditForm from './WarehouseEditForm';
+import WarehouseAddNewForm from './WarehouseAddNewForm';
 class WarehouseEdit extends React.Component {
   static defaultProps = {
     pathName: 'Warehouse',
@@ -16,6 +16,10 @@ class WarehouseEdit extends React.Component {
     });
   }
 
+  componentDidMount(){
+
+  }
+
   render() {
     const props = this.props
     return (
@@ -28,7 +32,7 @@ class WarehouseEdit extends React.Component {
           <Button key="back" onClick={props.afterClose}>Return</Button>,
         ]}
       >
-        <WarehouseEditForm {...props} onSubmit={this.handleSubmit} />
+        <WarehouseAddNewForm {...props} onSubmit={this.handleSubmit} />
       </Modal>
     )
   }
